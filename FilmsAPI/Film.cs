@@ -8,6 +8,11 @@ namespace FilmsAPI
         public string Title { get; set; }
         public string Starring { get; set; }
 
+        public Film()
+        {
+
+        }
+
         public Film(int year, int score, string title, string starring)
         {
             Year = year;

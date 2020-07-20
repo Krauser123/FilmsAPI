@@ -9,7 +9,7 @@ namespace FilmsAPI
 
         public DataProvider()
         {
-            AllItemsInStorage = ReadFromCSV.LoadCSV();
+            AllItemsInStorage = CSVUtils.LoadCSV();
         }
 
         public IEnumerable<Film> GetByScore(int score)
@@ -45,6 +45,15 @@ namespace FilmsAPI
         public List<Film> GetAllFilms()
         {
             return AllItemsInStorage;
+        }
+
+        public void SaveNewFilm(Film film)
+        {
+            //Add to in memory data 
+            AllItemsInStorage.Add(film);
+
+            //Save record
+            CSVUtils.WriteCSV(new List<Film> { film });
         }
     }
 }

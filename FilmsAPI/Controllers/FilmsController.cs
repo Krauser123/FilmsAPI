@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FilmsAPI.Controllers
@@ -12,6 +13,17 @@ namespace FilmsAPI.Controllers
         public FilmsController(IDataProvider dataProvider)
         {
             _dataProvider = dataProvider;
+        }
+
+       
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<Film> Create(Film film)
+        {            
+            _dataProvider.DataProvider.SaveNewFilm(film);
+
+            return CreatedAtAction("Create", film);
         }
 
         [HttpGet]
