@@ -14,7 +14,6 @@ namespace FilmsAPI.Controllers
         {
             _dataProvider = dataProvider;
         }
-
        
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -22,7 +21,6 @@ namespace FilmsAPI.Controllers
         public ActionResult<Film> Create(Film film)
         {            
             _dataProvider.DataProvider.SaveNewFilm(film);
-
             return CreatedAtAction("Create", film);
         }
 

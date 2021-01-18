@@ -58,7 +58,6 @@ namespace FilmsAPI
             {
                 endpoints.MapControllers();
             });
-
         }
     }
 }
