@@ -1,5 +1,4 @@
 ﻿using CsvHelper;
-using CsvHelper.Configuration;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -7,7 +6,7 @@ using System.Linq;
 
 namespace FilmsAPI
 {
-    public class CSVUtils
+    public static class CsvUtils
     {
         public static List<Film> LoadCSV()
         {
@@ -24,10 +23,8 @@ namespace FilmsAPI
                 csv.Configuration.RegisterClassMap<CsvPersonMapping>();
                 records = csv.GetRecords<Film>().Where(o => o != null).ToList();
             }
-
             return records;
         }
-
 
         public static void WriteCSV(List<Film> filmsToWrite)
         {
@@ -45,16 +42,5 @@ namespace FilmsAPI
                 csv.WriteRecords(filmsToWrite);
             }
         }
-    }
-
-    public class CsvPersonMapping : ClassMap<Film>
-    {
-        public CsvPersonMapping()
-        {
-            Map(x => x.Year);
-            Map(x => x.Score);
-            Map(x => x.Title);
-            Map(x => x.Starring);
-        }
-    }
+    }    
 }
