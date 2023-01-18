@@ -64,5 +64,19 @@ namespace FilmsAPI.Controllers
         {
             return _dataProvider.DataProvider.GetByStarringLike(nameToSearch);
         }
+
+        [HttpGet]
+        [Route("FilmsWithScoreCategory")]
+        public IEnumerable<Film> FilmsWithScoreCategory()
+        {
+            return _dataProvider.DataProvider.FilmsWithScoreCategory();
+        }
+
+        [HttpGet]
+        [Route("CategoryWithFilms")]
+        public IEnumerable<CategoryWithFilms> ScoreCategoryWithFilms()
+        {
+            return _dataProvider.DataProvider.ScoreCategoryWithFilms();
+        }
     }
 }
